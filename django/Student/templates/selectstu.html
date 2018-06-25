@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}
+    查询{{ str1 }}
+{% endblock %}
+
+{% block systemName %}
+    管理员后台
+{% endblock %}
+
+{% block main %}
+    <h3 class="center bottom20">查询{{ str1 }}</h3>
+    <h3>一共{{ stus.paginator.count }}条数据</h3>
+    <table align="center" width="600px">
+        <tr>
+            <th width="100px">学生名字</th>
+            <th width="200px">学生学号</th>
+            <th width="50px">操作</th>
+            <th width="50px"><a href="/stu/addstu/">添加信息</a></th>
+        </tr>
+        {% for stu in stus%}
+        <tr>
+            <td>{{ stu.s_name }}</td>
+            <td>{{ stu.s_num }}</td>
+            <td><a href="{% url 'stu:del' stu.id %}">删除</a>&nbsp;&nbsp;&nbsp;<a href="{% url 'stu:change' id=stu.id %}">修改</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+    <h5>
+        {% if stus.has_previous %}
+            <a href="/stu/allstu/?page_id={{ stus.previous_page_number }}">上一页</a>
+        {% endif %}
+        {% for i in stus.paginator.page_range %}
+            {% if i != stus.number %}
+                <a href="/stu/allstu/?page_id={{ i }}">{{ i }}</a>
+            {% else %}
+                {{ i }}
+            {% endif %}
+        {% endfor %}
+        {% if stus.has_next %}
+            <a href="/stu/allstu/?page_id={{ stus.next_page_number }}">下一页</a>
+        {% endif %}
+    </h5>
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block EXTJS %}
+{#    <script type="text/javascript" src="{% static 'app/order/js/order.js' %}"></script>#}
+{% endblock %}
+
+{% block extCSS %}
+    <style>
+        .center {
+            text-align: center;
+        }
+    </style>
+
+{% endblock %}
+
+{% block content %}
+
+    <div id="order_info" class="container">
+
+    <!--订单编号-->
+    <h3>订单编号:{{ order_id }}</h3>
+    <!--处理结束-->
+        <!--所有订单信息展示-->
+        <table>
+            <tr>
+                <th class="center"><h3>商品编号</h3></th>
+                <th class="center"><h3>商品图片</h3></th>
+                <th class="center"><h3>商品详情</h3></th>
+                <th class="center"><h3>商品数量</h3></th>
+            </tr>
+            {% for ordergood in ordergoods %}
+                <tr>
+                    <td class="center"><h3>{{ ordergood.goods.productnum }}</h3></td>
+                    <td class="center"><img src="{{ ordergood.goods.productimg }}"></td>
+                    <td class="center"><h3>{{ ordergood.goods.productname }}</h3>
+                        <h3>{{ ordergood.goods.productlongname }}</h3>
+                    </td>
+                    <td class="center"><span style="font-size: 20px"> <!-- 数量展示 -->{{ ordergood.goods_num }}</span></td>
+                </tr>
+
+            {% endfor %}
+        </table>
+
+        <!--订单处理结束-->
+        <!--订单id展示-->
+        <button id="alipay" class="btn btn-success btn-block" orderid="" style="font-size: 30px"><a href="/axf/paying/?order_id={{ order_id }}">Alipay</a></button>
+
+    </div>
+
+
+{% endblock %}

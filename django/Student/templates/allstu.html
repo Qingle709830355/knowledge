@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}
+    显示所有信息
+{% endblock %}
+
+{% block systemName %}
+    管理员后台
+{% endblock %}
+
+{% block main %}
+    <h3 class="center bottom20">显示所有学生信息</h3>
+    <form action="/stu/selstu/" method="post">
+        <input type="text" name="str1">
+        <input type="submit" value="查询">
+    </form>
+    <h3>一共{{ stus.paginator.count }}条数据</h3>
+    <table align="center" width="600px">
+        <tr>
+            <th width="100px">学生名字</th>
+            <th width="200px">学生学号</th>
+            <th width="100px">班级</th>
+            <th width="100px">操作</th>
+            <th width="50px"><a href="/stu/addstu/?g_id={{ grade.id }}">添加信息</a></th>
+        </tr>
+        {% for stu in stus%}
+        <tr>
+            <td>{{ stu.s_name }}</td>
+            <td>{{ stu.s_num }}</td>
+            <td>{{ grade.g_name }}</td>
+            <td><a href="/stu/delstu/{{ stu.id }}/?g_id={{ grade.id }}">删除</a> | <a href="{% url 'stu:change' id=stu.id %}">修改</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+    <h5>
+        {% if stus.has_previous %}
+            <a href="/stu/stus/?g_id={{ grade.id }}&page_id={{ stus.previous_page_number }}">上一页</a>
+        {% endif %}
+        {% for i in stus.paginator.page_range %}
+            {% if i != stus.number %}
+                <a href="/stu/stus/?page_id={{ i }}">{{ i }}</a>
+            {% else %}
+                {{ i }}
+            {% endif %}
+        {% endfor %}
+        {% if stus.has_next %}
+            <a href="/stu/stus/?g_id={{ grade.id }}&page_id={{ stus.next_page_number }}">下一页</a>
+        {% endif %}
+    </h5>
+{% endblock %}

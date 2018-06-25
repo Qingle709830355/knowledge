@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}
+    添加学生信息
+{% endblock %}
+
+{% block systemName %}
+    管理员后台
+{% endblock %}
+{% block main %}
+    <h3 class="center bottom20">学生信息添加</h3>
+    <input type="hidden" id="message" value="{{ message }}">
+    <form action="/stu/addstu/" method="post">
+        <input type="hidden" name="g_id" value="{{ grade.id }}">
+        姓名：<input type="text" name="name"><br>
+        学号：<input type="text" name="num"><br>
+        <input type="submit" value="添加">
+    </form>
+    <a href="/stu/stus/?g_id={{ grade.id }}">返回该班级</a>
+{% endblock %}

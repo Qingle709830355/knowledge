@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}
+    查询{{ str1 }}
+{% endblock %}
+
+{% block systemName %}
+    管理员后台
+{% endblock %}
+
+{% block main %}
+    <h3 class="center bottom20">查询{{ str1 }}</h3>
+    <h3>一共{{ courses.paginator.count }}条数据</h3>
+    <table align="center" width="600px">
+        <tr>
+            <th width="100px">学生名字</th>
+            <th width="200px">学生学号</th>
+            <th width="50px">操作</th>
+            <th width="50px"><a href="/course/addcourse/">添加信息</a></th>
+        </tr>
+        {% for course in courses %}
+        <tr>
+            <td>{{ course.c_name }}</td>
+            <td>{{ course.c_desc }}</td>
+            <td><a href="{% url 'course:delc' course.id %}">删除</a>&nbsp;&nbsp;&nbsp;<a href="{% url 'course:change' course.id%}">修改</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+    <h5>
+        {% if courses.has_previous %}
+            <a href="/course/allcourse/?page_id={{ courses.previous_page_number }}">上一页</a>
+        {% endif %}
+        {% for i in courses.paginator.page_range %}
+            {% if i != courses.number %}
+                <a href="/course/allcourse/?page_id={{ i }}">{{ i }}</a>
+            {% else %}
+                {{ i }}
+            {% endif %}
+        {% endfor %}
+        {% if courses.has_next %}
+            <a href="/course/allcourse/?page_id={{ courses.next_page_number }}">下一页</a>
+        {% endif %}
+    </h5>
+{% endblock %}

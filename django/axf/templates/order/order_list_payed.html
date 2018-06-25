@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extCSS %}
+    <style>
+        .center {
+            text-align: center;
+            clear: both;
+        }
+        .buttoncolor {
+            background-color: rgb(92, 184, 92);
+            width: 150px;
+            height: 30px;
+            text-align: center;
+            font-size: 30px;
+        }
+
+        .buttoncolor a {
+            color: black;
+        }
+
+        .right {
+            float: right;
+        }
+    </style>
+{% endblock %}
+{% block content %}
+
+    <h3>待收货订单列表</h3>
+
+    {% for order in orders %}
+    <h3 class="center" style="border: 5px solid blue">订单编号:{{ order.id }}</h3>
+    <table>
+        <tr>
+            <th class="center"><h3>商品编号</h3></th>
+            <th class="center"><h3>商品图片</h3></th>
+            <th class="center"><h3>商品详情</h3></th>
+            <th class="center"><h3>商品数量</h3></th>
+        </tr>
+        {% for ordergood in order.odergoodsmodel_set.all%}
+            <tr>
+                <td class="center"><h3>{{ ordergood.goods.productid }}</h3></td>
+                <td class="center"><img src="{{ ordergood.goods.productimg }}"></td>
+                <td class="center"><h3>{{ ordergood.goods.productname }}</h3>
+                    <h3>{{ ordergood.goods.productlongname }}</h3>
+                </td>
+                <td class="center"><span style="font-size: 20px"> <!-- 数量展示 -->{{ ordergood.goods_num }}</span></td>
+            </tr>
+        {% endfor %}
+    </table>
+        <div class="center" id="aplay">
+            <h3 class="buttoncolor right"><a href="/axf/surecollect/?order_id={{ order.id }}">确认收货</a></h3>
+        </div>
+
+    {% endfor %}
+
+
+{% endblock %}

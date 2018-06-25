@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}
+    显示所有信息
+{% endblock %}
+
+{% block systemName %}
+    管理员后台
+{% endblock %}
+
+{% block main %}
+    <h3 class="center bottom20">成绩记录</h3>
+    {% for stu in stus %}
+    <table>
+        <tr>
+            <th>学生姓名</th>
+            {% for stucourse in stu.stucourse_set.all %}
+                <th>{{ stucourse.course.c_name }}</th>
+            {% endfor %}
+        </tr>
+        <tr>
+            <td>{{ stu.s_name }}</td>
+             {% for stucourse in stu.stucourse_set.all %}
+                <form action="/course/surescores/" method="post">
+                 <input value="{{ stu.id }}" type="hidden" name="stu_id">
+                 <input value="{{ stucourse.course.id }}" type="hidden" name="course_id">
+                <td><input type="text" name="score_{{ stucourse.course.id }}" value="{{ stucourse.score }}"></td>
+            {% endfor %}
+            <td><input type="submit" value="确定"></td>
+            </form>
+         </tr>
+    </table>
+        <hr>
+    {% endfor %}
+
+{% endblock %}

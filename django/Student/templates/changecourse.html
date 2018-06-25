@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}
+    修改学生信息
+{% endblock %}
+
+{% block systemName %}
+    管理员后台
+{% endblock %}
+
+{% block main %}
+    <h3 class="center bottom20">更改学生信息</h3>
+    <form action="{% url 'course:changec' course.id %}" method="post">
+        <td><input type="text" name="name" value="{{ course.c_name }}"></td>
+        <td><input type="text" name="num" value="{{ course.c_desc }}"></td>
+        <td><input type="submit" value="保存修改"></td>
+    </form>
+
+{% endblock %}

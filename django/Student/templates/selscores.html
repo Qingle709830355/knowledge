@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}
+    显示所有信息
+{% endblock %}
+
+{% block systemName %}
+    管理员后台
+{% endblock %}
+
+{% block main %}
+    <h3 class="center bottom20">{{ stu.s_name }}的成绩</h3>
+    <table align="center" width="600px">
+        <tr>
+            <th>学生名字</th>
+            {% for stucourse in stucourses %}
+                <th>{{ stucourse.course.c_name }}</th>
+            {% endfor %}
+
+        </tr>
+        <tr>
+            <td>{{ stu.s_name }}</td>
+            {% for stucourse in stucourses %}
+                <td>{{ stucourse.score }}</td>
+            {% endfor %}
+
+    </table>
+{% endblock %}
