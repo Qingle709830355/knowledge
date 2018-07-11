@@ -1,4 +1,9 @@
-# Python web知识点整理
+# Python知识点整理
+
+## 基础入门
+* 1.[千行代码入门python](python/python_base.md)
+* 2.[python面向对象](python/python_object.md)
+* 3.[小游戏学提升python基础](python/python_pygame.md)
 
 ## Django上手到实战
 
@@ -42,3 +47,5 @@
 * 5.[Flask实例1:利用flask+requests+bs4创建的一个简单的小说网站](flask/pandatxt)
 * 6.[FLask实例2:学生信息后台管理系统](flask/stumanage/)
 * 7.[Flask实例3:房屋发布租赁app](flask/rootlease/)
+
+## 爬虫知识点整理加实战
