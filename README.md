@@ -1,9 +1,9 @@
 # Python知识点整理
 
 ## 基础入门
-* 1.[千行代码入门python](python/python_base.md)
-* 2.[python面向对象](python/python_object.md)
-* 3.[小游戏巩固python基础](python/python_pygame.md)
+* 1.[千行代码入门python](Python/python_base.md)
+* 2.[python面向对象](Python/python_object.md)
+* 3.[小游戏巩固python基础](Python/python_pygame.md)
 
 ## Django上手到实战
 
