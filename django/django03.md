@@ -331,11 +331,11 @@ django模板中还自带了实现数据显示的方法
 
 在上一步操作结束后, 便可进入[站点管理后台](localhost:8088/admin)
 
-![后台管理登录第一次](img\admin_login01.png)
+![后台管理登录第一次](img/admin_login01.png)
 
 输入刚刚创建的管理员账号与密码，即可登录
 
-![后台管理界面](img\after_login.png)
+![后台管理界面](img/after_login.png)
 不过这样登录后，我们会发现界面并不是我们想要的中文界面，可以在setting里面更改语言和时区这两项
 
 	LANGUAGE_CODE = 'zh-hans'
@@ -350,7 +350,7 @@ django模板中还自带了实现数据显示的方法
 
 刷新后，界面就是我们想要的中文界面了
 
-![中文站点管理界面](img\after_login02.png)
+![中文站点管理界面](img/after_login02.png)
 
 这个时候，及时我们已经建立好了数据模型，但是因为还未注册模型到站点管理，所以在站点管理还无法进行对模型的管理
 
@@ -362,7 +362,7 @@ django模板中还自带了实现数据显示的方法
 	admin.site.register(Grade)
 导入自己定义的模型，并完成注册，不过这其实只是一种最简单的注册方式，还有一种通过装饰器来完成注册的方法将在下面的谈到
 
-![注册模型](img\register_model.png)
+![注册模型](img/register_model.png)
 
 但是我们同样会发现，这样注册出来的模型，全是英文名，并且连显示的app也是英文名，但是在这里，我们并不想要英文名应该怎样做了？
 
@@ -389,13 +389,13 @@ django模板中还自带了实现数据显示的方法
 		verbose_name = '班级管理'
     	verbose_name_plural = verbose_name
 
-![修改模型和app的名称](img\change_name.png)
+![修改模型和app的名称](img/change_name.png)
 
 ### 3.2.3 按照我们想要的方式重写模型注册
 
 点击进入刚刚注册好的模型，并添加一些数据，在显示信息的时候，显示的仅仅是一个模型对象，这样显示，十分不直观，但是我们可以通过设置一些东西，便可使得其更加直观
 
-![模型对象](img\stu_info01.png)
+![模型对象](img/stu_info01.png)
 
 在这里，我们将介绍到，第二种注册模型的方式：通过装饰器来注册模型
 
@@ -427,13 +427,13 @@ django模板中还自带了实现数据显示的方法
 	def __str__(self):
 		return self.g_name
 
-![重写注册](img\new_register.png)
+![重写注册](img/new_register.png)
 
 ### 3.2.4 改变某个字段数据的输出方式
 
 当某个字段的内容，很长的时候，例如班级描述
 
-![字段的内容太多，或者想直接显示图片](img\fields_too_more.png)
+![字段的内容太多，或者想直接显示图片](img/fields_too_more.png)
 
 在定义模型的时候，自定义一些方法来实现，自定义显示，定义好了自定义方法，还需要将admin.py中的初始字段名修改为自定义方法的名字
 
@@ -448,7 +448,7 @@ django模板中还自带了实现数据显示的方法
     images.short_description = '班级图片'
 
 
-![自定义字段的表现结果](img\change_fields_str.png)
+![自定义字段的表现结果](img/change_fields_str.png)
 
 
 

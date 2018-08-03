@@ -3,7 +3,7 @@
 ## 基础入门
 * 1.[千行代码入门python](python/python_base.md)
 * 2.[python面向对象](python/python_object.md)
-* 3.[小游戏学提升python基础](python/python_pygame.md)
+* 3.[小游戏巩固python基础](python/python_pygame.md)
 
 ## Django上手到实战
 
@@ -48,4 +48,15 @@
 * 6.[FLask实例2:学生信息后台管理系统](flask/stumanage/)
 * 7.[Flask实例3:房屋发布租赁app](flask/rootlease/)
 
-## 爬虫知识点整理加实战
+## 爬虫实战
+
+- [爬虫相关知识点](spider/spider_base01.md)
+- [反爬虫综合](spider/spider_base02.md)
+- [使用urllib爬去搜狐新闻并存储数据库](spider/spider01.md)
+- [使用requests+bs4多线程爬取智联招聘和boss招聘职位信息](spider/spider02.md)
+- [使用多线程和多进程爬取全本《名侦探柯南》漫画并存储](spider/spider03.md)
+- [使用selenium爬取动态数据](spider/spider04.md)
+- [使用scrapy框架爬去顶点小说所有小说]()
+- [使用scrapy-redis分布式爬取链家网的成都地区的所有二手房信息]()
+- [使用scrapy-redis分布式爬取途牛网旅游攻略]
+- [使用pyspider框架爬取表情包](spider/spider07.md)
